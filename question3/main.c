@@ -1,35 +1,24 @@
 #include <stdio.h>
 
-int term;
-int fibonacci(int prNo, int num);
+int DigitSum(int num);
 
-void main()
+int main()
 {
-    static int prNo = 0, num = 1;
-    printf(" Input number of terms for the Series (<20) : ");
-    scanf("%d", &term);
-    printf("The series are : \n");
-    printf(" 1 ");
-    fibonacci(prNo, num);
-    printf("\n\n");
+    int n1, sum;
+    printf(" Input any number to find sum of digits: ");
+    scanf("%d", &n1);
+
+    sum = DigitSum(n1);
+
+    printf("The Sum of digits of %d = %d\n\n", n1, sum);
+
+    return 0;
 }
 
-int fibonacci(int prNo, int num)
+int DigitSum(int n1)
 {
-    static int i = 1;
-    int nxtNo;
+    if(n1 == 0)
+        return 0;
 
-    if(i == term)
-        return(0);
-    else
-    {
-        nxtNo = prNo + num;
-        prNo = num;
-        num = nxtNo;
-        printf("%d  ", nxtNo);
-
-        i++;
-        fibonacci(prNo, num);
-    }
-    return (0);
+    return ((n1 % 10) + DigitSum(n1/10));
 }
