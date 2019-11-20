@@ -1,28 +1,26 @@
 #include<stdio.h>
-#define MAX 100
-char* ReverseOfString(char[]);
+
+long int CalcuOfPower(int x, int y)
+{
+    long int result=1;
+    if(y == 0) return result;
+    result=x*(CalcuOfPower(x, y-1));
+}
 
 int main()
 {
 
-    char str1[MAX],*revstr;
+    int bNum, pwr;
+    long int result;
+    printf("Input the base value : ");
+    scanf("%d", &bNum);
 
-    printf(" Input any string: ");
-    scanf("%s",str1);
+    printf("Input the value of power : ");
+    scanf("%d", &pwr);
 
-    revstr = ReverseOfString(str1);//call the function ReverseOfString
+    result=CalcuOfPower(bNum,pwr);
 
-    printf(" The reversed string is: %s\n\n",revstr);
+    printf("The value of %d to the power of %d is : %ld\n\n", bNum, pwr,result);
+
     return 0;
-}
-char* ReverseOfString(char str1[])
-{
-    static int i=0;
-    static char revstr[MAX];
-    if(*str1)
-    {
-         ReverseOfString(str1+1);//calling the function ReverseOfString itself
-         revstr[i++] = *str1;
-    }
-    return revstr;
 }
