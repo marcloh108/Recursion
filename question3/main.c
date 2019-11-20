@@ -1,24 +1,28 @@
-#include <stdio.h>
-
-int DigitSum(int num);
+#include<stdio.h>
+#define MAX 100
+char* ReverseOfString(char[]);
 
 int main()
 {
-    int n1, sum;
-    printf(" Input any number to find sum of digits: ");
-    scanf("%d", &n1);
 
-    sum = DigitSum(n1);
+    char str1[MAX],*revstr;
 
-    printf("The Sum of digits of %d = %d\n\n", n1, sum);
+    printf(" Input any string: ");
+    scanf("%s",str1);
 
+    revstr = ReverseOfString(str1);//call the function ReverseOfString
+
+    printf(" The reversed string is: %s\n\n",revstr);
     return 0;
 }
-
-int DigitSum(int n1)
+char* ReverseOfString(char str1[])
 {
-    if(n1 == 0)
-        return 0;
-
-    return ((n1 % 10) + DigitSum(n1/10));
+    static int i=0;
+    static char revstr[MAX];
+    if(*str1)
+    {
+         ReverseOfString(str1+1);//calling the function ReverseOfString itself
+         revstr[i++] = *str1;
+    }
+    return revstr;
 }
