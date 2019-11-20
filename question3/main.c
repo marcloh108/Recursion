@@ -1,19 +1,35 @@
 #include <stdio.h>
 
-    int sum (int, int);//function declaration
-    int main (void)
-    {
-        int total;
-        printf("\n\n Function : a simple structure of function :\n");
-        printf("------------------------------------------------\n");
-        total = sum (5, 6);//function call
-        printf ("The total is :  %d\n", total);
-        return 0;
-    }
+int term;
+int fibonacci(int prNo, int num);
 
-    int sum (int a, int b) //function definition
+void main()
+{
+    static int prNo = 0, num = 1;
+    printf(" Input number of terms for the Series (<20) : ");
+    scanf("%d", &term);
+    printf("The series are : \n");
+    printf(" 1 ");
+    fibonacci(prNo, num);
+    printf("\n\n");
+}
+
+int fibonacci(int prNo, int num)
+{
+    static int i = 1;
+    int nxtNo;
+
+    if(i == term)
+        return(0);
+    else
     {
-        int s;
-        s=a+b;
-        return s; //function returning a value
+        nxtNo = prNo + num;
+        prNo = num;
+        num = nxtNo;
+        printf("%d  ", nxtNo);
+
+        i++;
+        fibonacci(prNo, num);
     }
+    return (0);
+}
